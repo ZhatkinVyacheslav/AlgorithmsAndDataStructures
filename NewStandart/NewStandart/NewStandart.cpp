@@ -6,7 +6,7 @@ using namespace std;
 
 void menu()
 {
-    cout << "modes:\n1) Input data\n2) Output data\n3) Search data\n 4) Exit\n";
+    cout << "modes:\n1) Input data\n2) Output data\n3) Search data\n4) Exit\n";
 }
 
 int main()
@@ -19,6 +19,7 @@ int main()
     };
     
     do {
+        menu();
         cout << "Input mode: ";
         cin >> mode;
 
@@ -35,7 +36,7 @@ int main()
             cin >> number;
             do
             {
-                cout << "\nInput your Type and number\nType:";
+                cout << "\nInput your Type number\nType:";
                 cin >> numbertype;
                 switch (numbertype)
                 {
@@ -82,11 +83,20 @@ int main()
 
             for_each(vec.begin(), vec.end(), [&](pair <Type, float> &a)
                 {
-                    if (a.second == findnumber)
+                    if (findnumber == a.second)
                     {
-                        if (a.first == 2) { a.first = 0; }
+
+                        if (a.second == findnumber)
+                        {
+                            if (a.first == 2) {
+                                a.first = Private;
+                                cout << "{ " << a.first << " ; " << a.second << " }";
+                            }
+
+                        }
+                        else { i++; }
                     }
-                    else { i++; }
+                    else cout << "\nThis number not found :(";
                 }
             );
 
